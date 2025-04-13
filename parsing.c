@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:50:13 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/13 22:41:32 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/14 00:04:39 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	surr_walls_check(char **map, int height)
 			j = ft_strlen(map[i]) - 1;
 			if (map[i][j] == '\n')
 				j--;
-			while (map[i][j])
+			while (j >= 0)
 			{
 				if (map[i][j] != '1')
 					ft_error("Map is Not Surrounded by Walls");
@@ -155,10 +155,13 @@ void	parse(int ac, char *av[], t_game *game, t_objects *objs)
 	ext_check(av[1]);
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
-		ft_error("Cannot open the file");
-	game->map = malloc(sizeof(t_game));
+		ft_error("Cannot open the Map file");
+	game->rows = count_rows(fd);
+	game->map = malloc(sizeof(char *) * (game->rows + 1));
 	if (!game->map)
 		ft_error("Memory allocation failed");
+	// game->map[game->rows + 1] = NULL;
+	fd = open(av[1], O_RDONLY);
 	while (((*game).map[i] = get_next_line(fd)))
 		i++;
 	map_check((*game).map, i, objs);
