@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hounajar <hounajar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/12 16:50:34 by lvvz             ###   ########.fr       */
+/*   Created: 2024/11/03 14:22:19 by hounajar          #+#    #+#             */
+/*   Updated: 2024/11/11 23:07:00 by hounajar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+int	ft_isdigit(int c)
 {
-	t_game game;
-	parse(ac, av, game);
+	if (c >= '0' && c <= '9')
+	{
+		return (1);
+	}
+	return (0);
 }

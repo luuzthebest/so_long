@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hounajar <hounajar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/12 16:50:34 by lvvz             ###   ########.fr       */
+/*   Created: 2024/11/19 18:00:49 by hounajar          #+#    #+#             */
+/*   Updated: 2024/11/25 22:40:55 by hounajar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_game game;
-	parse(ac, av, game);
+	void	*p;
+
+	if (size != 0 && (nmemb > SIZE_MAX / size))
+		return (NULL);
+	p = malloc(nmemb * size);
+	if (p == NULL)
+		return (NULL);
+	ft_bzero(p, nmemb * size);
+	return (p);
 }

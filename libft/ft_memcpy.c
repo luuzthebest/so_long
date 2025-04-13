@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hounajar <hounajar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/12 16:50:34 by lvvz             ###   ########.fr       */
+/*   Created: 2024/11/18 10:31:21 by hounajar          #+#    #+#             */
+/*   Updated: 2024/11/19 18:52:17 by hounajar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	t_game game;
-	parse(ac, av, game);
+	unsigned char	*d;
+
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *)dest;
+	while (n--)
+	{
+		*(unsigned char *)dest++ = *(unsigned char *)src++;
+	}
+	return (d);
 }

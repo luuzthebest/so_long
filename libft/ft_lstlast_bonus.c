@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/12 16:50:34 by lvvz             ###   ########.fr       */
+/*   Created: 2024/11/21 21:31:45 by hounajar          #+#    #+#             */
+/*   Updated: 2025/03/09 21:00:19 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+t_stack	*ft_lstlast(t_stack *lst)
 {
-	t_game game;
-	parse(ac, av, game);
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

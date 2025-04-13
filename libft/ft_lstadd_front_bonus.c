@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/12 16:50:34 by lvvz             ###   ########.fr       */
+/*   Created: 2024/11/21 20:30:07 by hounajar          #+#    #+#             */
+/*   Updated: 2025/03/09 21:00:19 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
-	t_game game;
-	parse(ac, av, game);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

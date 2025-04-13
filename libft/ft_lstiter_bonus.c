@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/12 16:50:34 by lvvz             ###   ########.fr       */
+/*   Created: 2024/11/22 08:43:03 by hounajar          #+#    #+#             */
+/*   Updated: 2025/03/18 00:34:11 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+void	ft_lstiter(t_stack *lst, void (*f)(int))
 {
-	t_game game;
-	parse(ac, av, game);
+	t_stack	*nxt;
+
+	if (!lst || !f)
+		return ;
+	nxt = lst;
+	while (nxt != NULL)
+	{
+		f(nxt->content);
+		nxt = nxt->next;
+	}
 }

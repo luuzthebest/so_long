@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hounajar <hounajar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/12 16:50:34 by lvvz             ###   ########.fr       */
+/*   Created: 2024/11/19 18:29:32 by hounajar          #+#    #+#             */
+/*   Updated: 2024/11/19 21:07:18 by hounajar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char *av[])
+char	*ft_strdup(const char *s)
 {
-	t_game game;
-	parse(ac, av, game);
+	size_t	size;
+	char	*dest;
+
+	size = ft_strlen(s) + 1;
+	dest = malloc(size);
+	if (dest == NULL)
+		return (NULL);
+	ft_memcpy(dest, s, size);
+	return (dest);
 }
