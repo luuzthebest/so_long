@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/13 22:48:08 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/13 23:00:07 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int	main(int ac, char *av[])
 	// 	return (1);
 	objects = (t_objects){0, 0, 0};
 	parse(ac, av, &game, &objects);
-	free_struct(&game);
+	// free_struct(&game);
 }
