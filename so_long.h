@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:45:32 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/14 00:06:56 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/14 13:35:05 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ typedef struct s_game
 {
 	char **map;
 	int		rows;
+	int		player_x;
+	int		player_y;
+	int		exit_x;
+	int		exit_y;
 } t_game;
 // gnl
 # define BUFFER_SIZE 1
@@ -37,5 +41,6 @@ char	*get_next_line(int fd);
 
 void parse(int ac, char *av[], t_game *game, t_objects *obj);
 void ft_error(char *str);
+void map_error(char *str, t_game *game);
 void free_map(t_game *game);
 int	count_rows(int fd);

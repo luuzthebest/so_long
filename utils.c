@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:54:26 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/14 00:17:15 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/14 12:36:47 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 void ft_error(char *str)
 {
 	ft_putstr_fd(str, 2);
+	exit(1);
+}
+void map_error(char *str, t_game *game)
+{
+	ft_putstr_fd(str, 2);
+	free_map(game);
 	exit(1);
 }
 void free_map(t_game *game)
