@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:50:13 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/14 15:03:45 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/15 15:54:52 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,14 +126,14 @@ void	objs_recheck(t_game *game, t_objects *objs)
 			else if (game->map[i][j] == 'E')
 			{
 				objs->e += 1;
-				// game->exit_x = j;
-				// game->exit_y = i;
+				game->exit_x = j;
+				game->exit_y = i;
 			}
 			else if (game->map[i][j] == 'P')
 			{
 				objs->p += 1;
-				// game->player_x = j;
-				// game->player_y = i;
+				game->player_x = j;
+				game->player_y = i;
 			}
 			j--;
 		}
@@ -143,13 +143,37 @@ void	objs_recheck(t_game *game, t_objects *objs)
 		map_error("Invalid Objects in the Map", game);
 }
 
+// void	map_copy(t_game *game)
+// {
+// 	int i = 0;
+// 	int j;
+
+// 	game->map_copy = malloc(sizeof(char *) * (game->rows + 1));
+// 	while (game->map[i])
+// 	{
+// 		j = 0;
+// 		while (game->map[i][j])
+// 		{
+// 			game->map_copy[i][j] = game->map[i][j];
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// }
+
+// void seed_fill(t_game *game, t_objects *objs)
+// {
+// 	(void)objs;
+// 	map_copy(game);
+// }
+
 void	map_check(t_game *game, int height, t_objects *objs)
 {
 	is_rectangular(game);
 	objs_check(game);
 	surr_walls_check(game, height);
 	objs_recheck(game, objs);
-	// flood_fill(); 
+	// seed_fill(game, objs);
 }
 
 void	parse(int ac, char *av[], t_game *game, t_objects *objs)
@@ -171,5 +195,12 @@ void	parse(int ac, char *av[], t_game *game, t_objects *objs)
 	fd = open(av[1], O_RDONLY);
 	while (((*game).map[i] = get_next_line(fd)))
 		i++;
+	close(fd);
+	game->map_copy = malloc(sizeof(char *) * (game->rows + 1));
+	fd = open(av[1], O_RDONLY);
+	i = 0;
+	while (((*game).map_copy[i] = get_next_line(fd))) // leaks here
+		i++;
+	// printf("%i, %i", i, game->rows);
 	map_check(game, i, objs);
 }

@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:45:32 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/14 13:35:05 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/15 11:23:35 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef struct s_objects
 
 typedef struct s_game
 {
-	char **map;
+	char	**map;
+	char	**map_copy;
 	int		rows;
 	int		player_x;
 	int		player_y;
