@@ -6,11 +6,11 @@
 #    By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/15 12:44:47 by hounajar          #+#    #+#              #
-#    Updated: 2025/04/15 15:21:45 by lvvz             ###   ########.fr        #
+#    Updated: 2025/04/15 16:04:22 by lvvz             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc -Wall -Wextra -Werror
+CC = cc -Wall -Wextra -Werror -g
 AR = ar rcs
 RM = rm -rf
 
