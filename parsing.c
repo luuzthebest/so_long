@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:50:13 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/16 16:01:45 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/16 16:59:37 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,10 +142,10 @@ void	objs_recheck(t_game *game, t_objects *objs)
 		map_error("Invalid Objects in the Map", game);
 }
 
-void rc_map(t_game *game, char **av, char ***target)//dynamic function
+void	rc_map(t_game *game, char **av, char ***target)//dynamic function
 {
-	int i;
-	int fd;
+	int	i;
+	int	fd;
 
 	i = 0;
 	fd = open(av[1], O_RDONLY);
@@ -163,7 +163,7 @@ void rc_map(t_game *game, char **av, char ***target)//dynamic function
 void	seed_fill(t_game *game, int x, int y)
 {
 	if (y < 0 || x < 0 || game->map_copy[y][x] == '1' || x >= game->cols
-		|| y >= game->rows|| game->map_copy[y][x] == 'V')
+		|| y >= game->rows || game->map_copy[y][x] == 'V')
 		return ;
 	game->map_copy[y][x] = 'V';
 	seed_fill(game, x + 1, y);
@@ -174,8 +174,8 @@ void	seed_fill(t_game *game, int x, int y)
 
 void	last_check(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->map_copy[i])
@@ -196,7 +196,6 @@ void	parse(int ac, char *av[], t_game *game, t_objects *objs)
 	if (ac != 2)
 		ft_error("Invalid ARGS");
 	ext_check(av[1]);
-	
 	game->rows = count_rows(av);
 	game->cols = count_cols(av[1]);
 	rc_map(game, av, &game->map);
