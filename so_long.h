@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:45:32 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/16 17:05:11 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/17 15:26:19 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,17 @@ typedef struct s_objects
 	int	p;
 }	t_objects;
 
+typedef struct s_infos
+{
+	void	*mlx;
+	void	*win;
+	int	screen_h;
+	int	screen_w;
+}	t_infos;
+
 typedef struct s_game
 {
+	t_infos	infos;
 	char	**map;
 	char	**map_copy;
 	int		rows;
@@ -50,6 +59,7 @@ void	parse(int ac, char *av[], t_game *game, t_objects *obj);
 void	ft_error(char *str);
 void	map_error(char *str, t_game *game);
 void	free_map(t_game *game);
+void	game_error(char *str, t_game *game);
 int		count_rows(char **av);
 int		count_cols(char *av);
 

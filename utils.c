@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:54:26 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/16 17:01:36 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/17 15:27:50 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	free_map(t_game *game)
 			i++;
 		}
 		free(game->map);
+		game->map = NULL;
 	}
 	i = 0;
 	if (game->map_copy)
@@ -48,8 +49,26 @@ void	free_map(t_game *game)
 			i++;
 		}
 		free(game->map_copy);
+		game->map_copy = NULL;
 	}
 	return ;
+}
+void	mlx_destroy(t_game *game)
+{
+	if (game->infos.mlx && game->infos.win)
+		mlx_destroy_window(game->infos.mlx, game->infos.win);
+	if (game->infos.mlx)
+	{
+		mlx_destroy_display(game->infos.mlx);
+		free(game->infos.mlx);
+		game->infos.mlx = NULL;
+	}
+}
+
+void	game_error(char *str, t_game *game)
+{
+	mlx_destroy(game);
+	map_error(str, game);
 }
 
 int	count_rows(char **av)

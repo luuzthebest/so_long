@@ -6,7 +6,7 @@
 #    By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/15 12:44:47 by hounajar          #+#    #+#              #
-#    Updated: 2025/04/15 16:04:22 by lvvz             ###   ########.fr        #
+#    Updated: 2025/04/17 13:22:28 by lvvz             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS = main.c parsing.c utils.c $(GNL)
 OBJS = $(SRCS:.c=.o)
 
 MAKEFLAGS += --no-print-directory
+MLX_FLAGS = -lmlx -lXext -lX11
 
 all: $(LIBFT) $(NAME)
 
@@ -37,7 +38,7 @@ $(LIBFT):
 
 $(NAME): $(OBJS) $(LIBFT) so_long.h
 	@echo SO_LONG LOADING..
-	@$(CC) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(CC) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
 
 %.o: %.c

@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:50:13 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/16 16:59:37 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/17 15:28:05 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,9 @@ void	parse(int ac, char *av[], t_game *game, t_objects *objs)
 	ext_check(av[1]);
 	game->rows = count_rows(av);
 	game->cols = count_cols(av[1]);
+	if (game->rows <= 2 || game->cols <= 2)
+        ft_error("Invalid map dimensions");
+    // printf("Map size: %d x %d\n", game->rows * 64, game->cols * 64);
 	rc_map(game, av, &game->map);
 	is_rectangular(game);
 	objs_check(game);
