@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/18 16:14:06 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/18 20:27:14 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	mlx_run(t_game *game)
 	game->infos.mlx = mlx_init();
 	mlx_get_screen_size(game->infos.mlx, &game->infos.screen_w,
 		&game->infos.screen_h);
-	if (game->rows * 64 > game->infos.screen_w
-		|| game->cols * 64 > game->infos.screen_h)
+	if (game->rows * 64 > game->infos.screen_h
+		|| game->cols * 64 > game->infos.screen_w)
 		game_error("Map size has exceed the screen size", game);
 	game->infos.win = mlx_new_window(game->infos.mlx, game->cols * 64,
 			game->rows * 64, "so_long");
