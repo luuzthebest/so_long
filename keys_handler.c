@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 01:54:05 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/18 11:24:28 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/18 14:11:57 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,36 @@ void    move_player(t_game *game, int direction)
     {
         game->map[new_y][new_x] = 'P';
         game->objects.c--;
+        game->moves++;
     }
     else if (target == 'E')
     {
         if (game->objects.c == 0)
         {
+            game->moves++;
+            ft_putstr_fd("Moves: ", 1);
+            ft_putnbr_fd(game->moves, 1);
+            ft_putstr_fd("\n", 1);
             ft_putstr_fd("You won !", 1);
             exit_game(game);
         }
         game->map[new_y][new_x] = 'B';
+        game->moves++;
     } else
+    {
+        game->moves++;
         game->map[new_y][new_x] = 'P';
-
+    }
     if (game->map[game->player_y][game->player_x] == 'B')
         game->map[game->player_y][game->player_x] = 'E';
     else
         game->map[game->player_y][game->player_x] = '0';
     game->player_x = new_x;
     game->player_y = new_y;
-    render_map(game);       
+    render_map(game);
+    ft_putstr_fd("Moves: ", 1);
+    ft_putnbr_fd(game->moves, 1);
+    ft_putstr_fd("\n", 1);
 }
 
 int handle_keypress(int keycode, t_game *game)

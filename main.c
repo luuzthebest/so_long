@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/18 11:22:35 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/18 13:54:38 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	mlx_imgs(t_game *game)
 	if (!game->t_imgs->player || !game->t_imgs->wall
 		|| !game->t_imgs->collectible || !game->t_imgs->exit || !game->t_imgs->on_box)
 		game_error("Error :\nOne or more assets are missing!\n", game);
-	// mlx_loop(game->infos.mlx);
 }
 
 void	render_map(t_game *game)
@@ -92,5 +91,4 @@ int	main(int ac, char *av[])
 	mlx_hook(game.infos.win, 17, 0, exit_game, &game);
 	mlx_key_hook(game.infos.win, &handle_keypress, &game);
 	mlx_loop(game.infos.mlx);
-	game_error("done", &game);
 }
