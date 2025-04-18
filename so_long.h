@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:45:32 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/17 15:26:19 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/18 01:59:37 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,20 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 # include <mlx.h>
+
+
+enum e_keys
+{
+	KEY_ESC = 65307,
+	UP = 65362,
+	DOWN = 65364,
+	LEFT = 65361,
+	RIGHT = 65363,
+	KEY_W = 119,
+	KEY_A = 97,
+	KEY_S = 115,
+	KEY_D = 100
+};
 
 typedef struct s_objects
 {
@@ -33,9 +47,20 @@ typedef struct s_infos
 	int	screen_w;
 }	t_infos;
 
+typedef struct s_imgs
+{
+	void	*player;
+	void	*wall;
+	void	*floor;
+	void	*collectible;
+	void	*exit;
+}	t_imgs;
+
+
 typedef struct s_game
 {
 	t_infos	infos;
+	t_imgs	*t_imgs;
 	char	**map;
 	char	**map_copy;
 	int		rows;
@@ -62,5 +87,7 @@ void	free_map(t_game *game);
 void	game_error(char *str, t_game *game);
 int		count_rows(char **av);
 int		count_cols(char *av);
+
+int handle_keypress(int keycode, t_game *game);
 
 #endif

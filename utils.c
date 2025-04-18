@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:54:26 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/17 15:27:50 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/18 02:08:21 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,28 @@ void	mlx_destroy(t_game *game)
 	}
 }
 
+void	clean_imgs(t_game *game)
+{
+	if (game->t_imgs)
+	{
+		if (game->t_imgs->player)
+			mlx_destroy_image(game->infos.mlx, game->t_imgs->player);
+		if (game->t_imgs->wall)
+			mlx_destroy_image(game->infos.mlx, game->t_imgs->wall);
+		if (game->t_imgs->collectible)
+			mlx_destroy_image(game->infos.mlx, game->t_imgs->collectible);
+		if (game->t_imgs->exit)
+			mlx_destroy_image(game->infos.mlx, game->t_imgs->exit);
+		if (game->t_imgs->floor)
+			mlx_destroy_image(game->infos.mlx, game->t_imgs->floor);
+		free(game->t_imgs);
+		game->t_imgs = NULL;
+	}
+}
+
 void	game_error(char *str, t_game *game)
 {
+	clean_imgs(game);
 	mlx_destroy(game);
 	map_error(str, game);
 }
