@@ -6,7 +6,7 @@
 #    By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/15 12:44:47 by hounajar          #+#    #+#              #
-#    Updated: 2025/04/18 01:56:51 by lvvz             ###   ########.fr        #
+#    Updated: 2025/04/18 16:31:37 by lvvz             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ GNL = gnl/gnl.c gnl/gnl_utils.c
 
 NAME = so_long
 
-SRCS = main.c parsing.c utils.c keys_handler.c $(GNL)
+SRCS = main.c parsing.c utils.c keys_handler.c cleaner.c p_utils.c $(GNL)
 
 OBJS = $(SRCS:.c=.o)
 

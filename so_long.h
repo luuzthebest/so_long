@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:45:32 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/18 13:52:28 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/18 16:26:09 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 # include <mlx.h>
-
 
 enum e_keys
 {
@@ -43,8 +42,8 @@ typedef struct s_infos
 {
 	void	*mlx;
 	void	*win;
-	int	screen_h;
-	int	screen_w;
+	int		screen_h;
+	int		screen_w;
 }	t_infos;
 
 typedef struct s_imgs
@@ -57,21 +56,20 @@ typedef struct s_imgs
 	void	*on_box;
 }	t_imgs;
 
-
 typedef struct s_game
 {
-	t_infos	infos;
-	t_imgs	*t_imgs;
+	t_infos		infos;
+	t_imgs		*t_imgs;
 	t_objects	objects;
-	char	**map;
-	char	**map_copy;
-	int		rows;
-	int		cols;
-	int		player_x;
-	int		player_y;
-	int		exit_x;
-	int		exit_y;
-	int		moves;
+	char		**map;
+	char		**map_copy;
+	int			rows;
+	int			cols;
+	int			player_x;
+	int			player_y;
+	int			exit_x;
+	int			exit_y;
+	int			moves;
 }	t_game;
 // gnl
 # define BUFFER_SIZE 1
@@ -90,9 +88,15 @@ void	free_map(t_game *game);
 void	game_error(char *str, t_game *game);
 int		count_rows(char **av);
 int		count_cols(char *av);
+void	ext_check(char *av);
+void	is_rectangular(t_game *game);
+
+void	objs_recheck(t_game *game);
+void	surr_walls_check(t_game *game, int height);
+void	objs_check(t_game *game);
 
 void	render_map(t_game *game);
-int handle_keypress(int keycode, t_game *game);
-int    exit_game(t_game *game);
+int		handle_keypress(int keycode, t_game *game);
+int		exit_game(t_game *game);
 
 #endif
