@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:54:26 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/18 02:08:21 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/18 11:12:53 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	clean_imgs(t_game *game)
 			mlx_destroy_image(game->infos.mlx, game->t_imgs->exit);
 		if (game->t_imgs->floor)
 			mlx_destroy_image(game->infos.mlx, game->t_imgs->floor);
+		if (game->t_imgs->on_box)
+			mlx_destroy_image(game->infos.mlx, game->t_imgs->on_box);
 		free(game->t_imgs);
 		game->t_imgs = NULL;
 	}

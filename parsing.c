@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:50:13 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/18 00:13:01 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/18 09:57:09 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	surr_walls_check(t_game *game, int height)
 	}
 }
 
-void	objs_recheck(t_game *game, t_objects *objs)
+void	objs_recheck(t_game *game)
 {
 	int	i;
 	int	j;
@@ -121,16 +121,16 @@ void	objs_recheck(t_game *game, t_objects *objs)
 		while (j >= 0)
 		{
 			if (game->map[i][j] == 'C')
-				objs->c += 1;
+				game->objects.c += 1;
 			else if (game->map[i][j] == 'E')
 			{
-				objs->e += 1;
+				game->objects.e += 1;
 				game->exit_x = j;
 				game->exit_y = i;
 			}
 			else if (game->map[i][j] == 'P')
 			{
-				objs->p += 1;
+				game->objects.p += 1;
 				game->player_x = j;
 				game->player_y = i;
 			}
@@ -138,7 +138,7 @@ void	objs_recheck(t_game *game, t_objects *objs)
 		}
 		i++;
 	}
-	if (objs->c < 1 || objs->p != 1 || objs->e != 1)
+	if (game->objects.c < 1 || game->objects.p != 1 || game->objects.e != 1)
 		map_error("Invalid Objects in the Map", game);
 }
 
@@ -191,7 +191,7 @@ void	last_check(t_game *game)
 	}
 }
 
-void	parse(int ac, char *av[], t_game *game, t_objects *objs)
+void	parse(int ac, char *av[], t_game *game)
 {
 	if (ac != 2)
 		ft_error("Invalid ARGS");
@@ -205,7 +205,7 @@ void	parse(int ac, char *av[], t_game *game, t_objects *objs)
 	is_rectangular(game);
 	objs_check(game);
 	surr_walls_check(game, game->rows);
-	objs_recheck(game, objs);
+	objs_recheck(game);
 	rc_map(game, av, &game->map_copy);
 	seed_fill(game, game->player_x, game->player_y);
 	last_check(game);
