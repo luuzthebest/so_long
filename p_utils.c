@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:25:20 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/18 16:33:29 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/19 15:05:16 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,7 @@ void	process_map(t_game *game, char obj, int x, int y)
 	if (obj == 'C')
 		game->objects.c += 1;
 	else if (obj == 'E')
-	{
 		game->objects.e += 1;
-		game->exit_x = x;
-		game->exit_y = y;
-	}
 	else if (obj == 'P')
 	{
 		game->objects.p += 1;

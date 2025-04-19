@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:45:32 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/18 16:26:09 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/19 15:05:21 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ typedef struct s_game
 	int			cols;
 	int			player_x;
 	int			player_y;
-	int			exit_x;
-	int			exit_y;
 	int			moves;
 }	t_game;
 // gnl
