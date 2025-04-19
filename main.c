@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 13:44:23 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/19 15:13:51 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/19 15:36:08 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	mlx_run(t_game *game)
 		&game->infos.screen_h);
 	if (game->rows * 64 > game->infos.screen_h
 		|| game->cols * 64 > game->infos.screen_w)
-		game_error("Map size has exceed the screen size", game);
+		game_error("Error\nMap size has exceed the screen size", game);
 	game->infos.win = mlx_new_window(game->infos.mlx, game->cols * 64,
 			game->rows * 64, "so_long");
 	if (!game->infos.win)
-		game_error("Failed to create window", game);
+		game_error("Error\nFailed to create window", game);
 }
 
 void	mlx_imgs(t_game *game)
@@ -33,7 +33,7 @@ void	mlx_imgs(t_game *game)
 	x = 64;
 	game->t_imgs = malloc(sizeof(t_imgs));
 	if (!game->t_imgs)
-		game_error("Assets allocation failed.", game);
+		game_error("Error\nAssets allocation failed.", game);
 	game->t_imgs->wall = mlx_xpm_file_to_image(game->infos.mlx,
 			"assets/wall.xpm", &x, &x);
 	game->t_imgs->player = mlx_xpm_file_to_image(game->infos.mlx,
@@ -49,7 +49,7 @@ void	mlx_imgs(t_game *game)
 	if (!game->t_imgs->player || !game->t_imgs->wall
 		|| !game->t_imgs->collectible || !game->t_imgs->exit
 		|| !game->t_imgs->on_box)
-		game_error("Error :\nOne or more assets are missing!\n", game);
+		game_error("Error\nOne or more assets are missing!\n", game);
 }
 
 void	render_tile(t_game *game, char tile, int x, int y)

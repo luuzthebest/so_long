@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:25:20 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/19 15:05:16 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/19 15:36:33 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	objs_check(t_game *game)
 			if (game->map[i][j] != '1' && game->map[i][j] != '0'
 				&& game->map[i][j] != 'C' && game->map[i][j] != 'P'
 				&& game->map[i][j] != 'E')
-				map_error("Invalid Char in the Map", game);
+				map_error("Error\nInvalid Char in the Map", game);
 			j--;
 		}
 		i++;
@@ -51,7 +51,7 @@ void	surr_walls_check(t_game *game, int height)
 			while (j >= 0)
 			{
 				if (game->map[i][j] != '1')
-					map_error("Map is Not Surrounded by Walls", game);
+					map_error("Error\nMap is Not Surrounded by Walls", game);
 				j--;
 			}
 		}
@@ -59,7 +59,7 @@ void	surr_walls_check(t_game *game, int height)
 		if (game->map[i][j] == '\n')
 			j--;
 		if (game->map[i][0] != '1' || game->map[i][j] != '1')
-			map_error("Map is Not Surrounded by Walls", game);
+			map_error("Error\nMap is Not Surrounded by Walls", game);
 		i++;
 	}
 }
@@ -97,5 +97,5 @@ void	objs_recheck(t_game *game)
 		i++;
 	}
 	if (game->objects.c < 1 || game->objects.p != 1 || game->objects.e != 1)
-		map_error("Invalid Objects in the Map", game);
+		map_error("Error\nInvalid Objects in the Map", game);
 }

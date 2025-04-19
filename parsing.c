@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:50:13 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/19 14:41:59 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/19 15:37:41 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	rc_map(t_game *game, char **av, char ***target)//dynamic function
 	i = 0;
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
-		ft_error("Cannot open the Map file");
+		ft_error("Error\nCannot open the Map file");
 	*target = malloc(sizeof(char *) * (game->rows + 1));
 	if (!*target)
-		ft_error("Memory allocation failed");
+		ft_error("Error\nMemory allocation failed");
 	(*target)[i] = get_next_line(fd);
 	while ((*target)[i])
 	{
@@ -58,7 +58,7 @@ void	last_check(t_game *game)
 		while (game->map_copy[i][j])
 		{
 			if (game->map_copy[i][j] == 'E' || game->map_copy[i][j] == 'C')
-				map_error("Not All the Objs are reachable", game);
+				map_error("Error\nNot All the Objs are reachable", game);
 			j++;
 		}
 		i++;
@@ -73,7 +73,7 @@ void	parse(int ac, char *av[], t_game *game)
 	game->rows = count_rows(av);
 	game->cols = count_cols(av[1]);
 	if (game->rows <= 2 || game->cols <= 2)
-		ft_error("Invalid map dimensions");
+		ft_error("Error\nInvalid map dimensions");
 	rc_map(game, av, &game->map);
 	is_rectangular(game);
 	objs_check(game);
