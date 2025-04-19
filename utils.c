@@ -6,7 +6,7 @@
 /*   By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 11:54:26 by lvvz              #+#    #+#             */
-/*   Updated: 2025/04/18 16:22:58 by lvvz             ###   ########.fr       */
+/*   Updated: 2025/04/19 14:41:31 by lvvz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ int	count_cols(char *av)
 	if (fd == -1)
 		ft_error("Cannot open the Map file");
 	res = get_next_line(fd);
+	if (!res)
+	{
+		free(res);
+		ft_error("Invalid");
+	}
 	len = ft_strlen(res);
 	if (res[len - 1] == '\n')
 		len--;

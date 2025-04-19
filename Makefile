@@ -6,7 +6,7 @@
 #    By: lvvz <lvvz@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/15 12:44:47 by hounajar          #+#    #+#              #
-#    Updated: 2025/04/18 16:31:37 by lvvz             ###   ########.fr        #
+#    Updated: 2025/04/19 14:30:57 by lvvz             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,4 +55,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
+.SECONDARY:
